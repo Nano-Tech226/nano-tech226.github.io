@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NANO TECH</title>
+<style>
+:root{--bg:#EAF0FF;--glow:rgba(40,100,255,.16);--dot:rgba(11,27,77,.12);--surface:#fff;--ink:#0B1B4D;--muted:#506090;--line:#BCCBF0;--g1:#F5C542;--g2:#D99A00;--gtxt:#8A5A00;--t1:#8A5A00;--t2:#D9A400;--on:#0B1B4D;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#050B24;--glow:rgba(60,130,255,.30);--dot:rgba(140,170,255,.16);--surface:#0E1A4A;--ink:#F2F5FF;--muted:#9FB0E0;--line:#26397F;--gtxt:#F5C542;--t1:#FFE08A;--t2:#F5B700}}
+:root[data-theme="dark"]{--bg:#050B24;--glow:rgba(60,130,255,.30);--dot:rgba(140,170,255,.16);--surface:#0E1A4A;--ink:#F2F5FF;--muted:#9FB0E0;--line:#26397F;--gtxt:#F5C542;--t1:#FFE08A;--t2:#F5B700}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+background:radial-gradient(circle at 12% 0%,var(--glow),transparent 45%),radial-gradient(circle at 90% 18%,var(--glow),transparent 40%),radial-gradient(var(--dot) 1.2px,transparent 1.6px) 0 0/24px 24px,var(--bg);background-attachment:fixed}
+main{max-width:560px;margin:0 auto;padding:26px 16px 40px}
+.hero{text-align:center;margin-bottom:22px}
+.cap{font-size:44px;line-height:1;filter:drop-shadow(0 4px 10px var(--glow))}
+h1{font-size:46px;line-height:1.05;margin:6px 0 4px;letter-spacing:2px;font-weight:900;background:linear-gradient(180deg,var(--t1),var(--t2));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+.tag{display:inline-block;font-weight:700;color:var(--on);background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:999px;padding:4px 16px;font-size:14px;letter-spacing:.5px}
+.stars{color:var(--gtxt);letter-spacing:6px;margin-top:8px}
+.sub{color:var(--muted);margin:10px 0 0}
+.warn{background:#FFF1E6;color:#7A2E00;border:1px solid #F5C9A6;border-radius:10px;padding:12px;margin-bottom:16px}
+h2{display:flex;align-items:center;gap:10px;font-size:17px;color:var(--gtxt);margin:24px 0 10px;text-transform:uppercase;letter-spacing:1px}
+h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--g2),transparent)}
+.offers{display:grid;gap:10px}
+.offer{width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;display:grid;grid-template-columns:46px 1fr auto;gap:2px 12px;align-items:center;transition:transform .15s,box-shadow .15s}
+.offer:active{transform:scale(.98)}
+.offer[aria-pressed="true"]{border-color:var(--g1);box-shadow:0 0 0 2px var(--g1),0 8px 24px var(--glow)}
+.ic{grid-row:span 2;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:24px;background:linear-gradient(135deg,var(--glow),transparent);border:1px solid var(--line)}
+.nm{font-weight:700}
+.ds{grid-column:2/4;color:var(--muted);font-size:14px}
+.pr{font-weight:800;color:var(--on);background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:999px;padding:3px 11px;font-size:14px;white-space:nowrap}
+.steps{background:var(--surface);border:1.5px solid var(--g2);border-radius:14px;padding:14px;margin-top:16px;display:grid;gap:10px;box-shadow:0 8px 24px var(--glow)}
+.steps[hidden],#pay[hidden],#tip2[hidden],.warn[hidden]{display:none}
+#pay{display:grid;gap:10px}
+.num{font-size:26px;font-weight:800;letter-spacing:1px;color:var(--gtxt);user-select:all}
+.btn{display:block;font:inherit;font-weight:800;text-align:center;text-decoration:none;border:0;border-radius:12px;padding:14px;background:linear-gradient(135deg,var(--g1),var(--g2));color:var(--on)}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.tip{font-size:14px;color:var(--muted)}
+.btn:focus-visible,.offer:focus-visible{outline:3px solid var(--g1);outline-offset:2px}
+footer{text-align:center;margin-top:28px;color:var(--muted);font-size:14px}
+footer b{display:block;color:var(--gtxt);font-size:18px;margin-top:4px}
+
+main{padding-bottom:96px!important}
+.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:20;border:0;border-radius:999px;padding:12px 18px;font:inherit;font-weight:800;color:var(--on);background:linear-gradient(135deg,var(--g1),var(--g2));box-shadow:0 8px 24px var(--glow);cursor:pointer}
+.chat{position:fixed;right:12px;left:12px;max-width:380px;margin-left:auto;bottom:calc(72px + env(safe-area-inset-bottom,0px));height:min(68vh,480px);z-index:21;background:var(--surface);border:1.5px solid var(--g2);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 12px 36px var(--glow)}
+.chat[hidden]{display:none}
+.ch-h{padding:10px 14px;font-weight:800;color:var(--on);background:linear-gradient(135deg,var(--g1),var(--g2));display:flex;justify-content:space-between;align-items:center}
+.ch-h button{border:0;background:transparent;color:var(--on);font:inherit;font-size:22px;cursor:pointer}
+.ch-m{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.b{max-width:88%;padding:8px 12px;border-radius:14px;font-size:15px;white-space:pre-line}
+.b.bot{background:var(--glow);align-self:flex-start}
+.b.me{background:linear-gradient(135deg,var(--g1),var(--g2));color:var(--on);align-self:flex-end}
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 8px}
+.chips button{border:1px solid var(--g2);background:transparent;color:var(--gtxt);border-radius:999px;padding:5px 10px;font:inherit;font-size:13px;cursor:pointer}
+.ch-f{display:flex;gap:6px;padding:8px;border-top:1px solid var(--line)}
+.ch-f input{flex:1;min-width:0;font:inherit;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:10px;padding:9px}
+.ch-f button{border:0;border-radius:10px;padding:0 14px;font:inherit;font-weight:800;color:var(--on);background:linear-gradient(135deg,var(--g1),var(--g2));cursor:pointer}
+.ch-w{display:block;text-align:center;font-size:14px;color:var(--gtxt);padding:8px;text-decoration:none;border-top:1px solid var(--line)}
+.fab:focus-visible,.chips button:focus-visible,.ch-f button:focus-visible,.ch-h button:focus-visible{outline:3px solid var(--g1);outline-offset:2px}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div class="cap">🎓</div>
+<h1 id="nom"></h1>
+<span class="tag">Formation · Partage · Réussite</span>
+<div class="stars">★ ★ ★ ★ ★</div>
+<p class="sub">Choisissez une offre. Payez par Orange Money ou Wave, puis écrivez-nous sur WhatsApp.</p>
+</header>
+<div id="warn" class="warn" hidden>Page en cours de configuration : ne payez rien pour l’instant.</div>
+<div class="offers" id="offers"></div>
+<section class="steps" id="steps" hidden>
+<div id="pay">
+<div><b>Envoyez <span id="prix"></span> par Orange Money ou Wave au :</b></div>
+<div class="num" id="om"></div>
+<div class="tip">Gardez le message de confirmation du transfert.</div>
+</div>
+<a class="btn" id="wa" href="#" target="_blank" rel="noopener"></a>
+<div class="tip" id="tip2">Ne donnez jamais votre code secret Orange Money ou Wave à personne. Payez uniquement au numéro affiché sur cette page.</div>
+</section>
+<footer>Contact WhatsApp<b id="tel"></b><div style="margin-top:10px">NANO TECH, votre allié pour un avenir réussi !</div></footer>
+</main>
+<script>
+(function(){
+var CONFIG=window.NT={
+boutique:"NANO TECH",
+om:"04241656",
+wa:"22604241656",
+tel:"+226 04 24 16 56",
+offres:[
+{cat:"Nos formations",ic:"🔐",nom:"Formation : créer son VPN",prix:6000,desc:"Apprendre à monter son propre serveur VPN, pas à pas"},
+{cat:"Nos formations",ic:"💻",nom:"Formation : créer son application",prix:20000,desc:"Créer une application mobile ou web, de l’idée au lancement"},
+{cat:"Nos formations",ic:"🎬",nom:"Formation : vidéos avec l’IA",prix:4000,desc:"Créer des vidéos avec des outils d’intelligence artificielle"},
+{cat:"Tarifs VPN",ic:"💎",nom:"VPN : 1 semaine",prix:750,desc:"Accès au serveur VPN NANO TECH pendant 1 semaine"},
+{cat:"Tarifs VPN",ic:"💎",nom:"VPN : 2 semaines",prix:1500,desc:"Accès au serveur VPN NANO TECH pendant 2 semaines"},
+{cat:"Tarifs VPN",ic:"💎",nom:"VPN : 1 mois",prix:2500,desc:"Accès au serveur VPN NANO TECH pendant 1 mois"}
+]};
+var $=function(i){return document.getElementById(i)};
+var ok=!!(CONFIG.om&&CONFIG.wa),sel=null;
+function fmt(n){return new Intl.NumberFormat("fr-FR").format(n)+" FCFA"}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e}
+document.title=CONFIG.boutique;$("nom").textContent=CONFIG.boutique;$("tel").textContent=CONFIG.tel;
+if(!ok)$("warn").hidden=false;
+function render(){
+var box=$("offers"),last="";box.innerHTML="";
+CONFIG.offres.forEach(function(o,i){
+if(o.cat!==last){last=o.cat;box.appendChild(el("h2","",o.cat))}
+var b=el("button","offer");b.type="button";b.setAttribute("aria-pressed",String(sel===i));
+b.appendChild(el("div","ic",o.ic));b.appendChild(el("div","nm",o.nom));
+b.appendChild(el("div","pr",o.prix?fmt(o.prix):"Sur WhatsApp"));b.appendChild(el("div","ds",o.desc));
+b.addEventListener("click",function(){sel=i;render();$("steps").scrollIntoView({behavior:"smooth",block:"nearest"})});
+box.appendChild(b)});
+var s=$("steps");
+if(sel===null){s.hidden=true;return}
+var o=CONFIG.offres[sel],priced=!!o.prix,w=$("wa");
+s.hidden=false;$("pay").hidden=!priced;$("tip2").hidden=!priced;
+if(priced){$("prix").textContent=fmt(o.prix);$("om").textContent=CONFIG.om}
+w.textContent=priced?"J’ai payé : écrire sur WhatsApp":"Demander le prix sur WhatsApp";
+if(ok){
+var msg=priced?"Bonjour, j’ai payé "+fmt(o.prix)+" pour « "+o.nom+" ». Voici ma capture du paiement avec l’ID de transaction.":"Bonjour, je suis intéressé(e) par « "+o.nom+" ». Quel est le prix ?";
+w.href="https://wa.me/"+CONFIG.wa.replace(/\D/g,"")+"?text="+encodeURIComponent(msg);w.removeAttribute("aria-disabled")}
+else{w.href="#";w.setAttribute("aria-disabled","true")}}
+render();
+})();
+</script>
+
+<button class="fab" id="fab" type="button" aria-expanded="false" aria-controls="chat">💬 Besoin d’aide ?</button>
+<section class="chat" id="chat" hidden aria-label="Assistant NANO TECH">
+<div class="ch-h"><span>Assistant NANO TECH</span><button type="button" id="x" aria-label="Fermer">×</button></div>
+<div class="ch-m" id="msgs" aria-live="polite"></div>
+<div class="chips" id="chips"></div>
+<form class="ch-f" id="cf"><input id="ci" placeholder="Écrivez votre question" aria-label="Votre question" autocomplete="off"><button type="submit">Envoyer</button></form>
+<a class="ch-w" id="cw" href="#" target="_blank" rel="noopener">Parler à une personne sur WhatsApp</a>
+</section>
+<script>
+(function(){
+var NT=window.NT;if(!NT)return;
+var $=function(i){return document.getElementById(i)};
+function norm(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
+function fmt(n){return new Intl.NumberFormat("fr-FR").format(n)+" FCFA"}
+function list(cat){return NT.offres.filter(function(o){return o.cat===cat}).map(function(o){return "• "+o.nom+" : "+(o.prix?fmt(o.prix):"prix sur WhatsApp")}).join("\n")}
+var KB=[
+{k:["vpn"],a:function(){return "Accès au serveur VPN NANO TECH :\n"+list("Tarifs VPN")+"\n\nPour les détails, écrivez-nous sur WhatsApp."}},
+{k:["formation","apprendre","cours","application","video","ia "],a:function(){return NT.offres.filter(function(o){return o.cat==="Nos formations"}).map(function(o){return "• "+o.nom+" ("+fmt(o.prix)+") : "+o.desc}).join("\n")}},
+{k:["prix","tarif","combien","cout","coute"],a:function(){return "Nos formations :\n"+list("Nos formations")+"\n\nTarifs VPN :\n"+list("Tarifs VPN")}},
+{k:["payer","paiement","paye","orange","wave","transfert"],a:function(){return "Pour payer :\n1. Choisissez votre offre sur la page.\n2. Envoyez le montant par Orange Money ou Wave au "+NT.om+".\n3. Appuyez sur « J’ai payé » et envoyez la capture avec l’ID de transaction sur WhatsApp.\n\nNe donnez jamais votre code secret."}},
+{k:["recevoir","acces","fichier","livraison","delai","quand"],a:function(){return "Dès que votre paiement est vérifié, nous vous envoyons votre accès sur WhatsApp."}},
+{k:["arnaque","confiance","securite","faux","fiable","sur "],a:function(){return "Payez uniquement au numéro affiché sur cette page ("+NT.om+"). Ne partagez jamais votre code secret Orange Money ou Wave."}},
+{k:["contact","whatsapp","joindre","appeler","numero"],a:function(){return "Écrivez-nous sur WhatsApp : "+NT.tel}},
+{k:["bonjour","salut","bonsoir","hello","coucou"],a:function(){return "Bonjour ! Je peux répondre à vos questions sur les prix, le paiement et les formations."}}
+];
+function answer(q){var n=" "+norm(q)+" ";for(var i=0;i<KB.length;i++){for(var j=0;j<KB[i].k.length;j++){if(n.indexOf(KB[i].k[j])>-1)return KB[i].a()}}
+return "Je n’ai pas la réponse à cette question. Écrivez-nous sur WhatsApp, nous vous répondrons : "+NT.tel}
+function add(t,c){var d=document.createElement("div");d.className="b "+c;d.textContent=t;$("msgs").appendChild(d);$("msgs").scrollTop=$("msgs").scrollHeight}
+function ask(q){q=q.trim();if(!q)return;add(q,"me");add(answer(q),"bot")}
+["Les prix","Comment payer","Les formations","Recevoir mon accès"].forEach(function(t){var b=document.createElement("button");b.type="button";b.textContent=t;b.addEventListener("click",function(){ask(t)});$("chips").appendChild(b)});
+$("cw").href="https://wa.me/"+NT.wa.replace(/\D/g,"")+"?text="+encodeURIComponent("Bonjour, j’ai une question.");
+add("Bonjour ! Je suis l’assistant NANO TECH. Choisissez un sujet ou posez votre question.","bot");
+function toggle(o){$("chat").hidden=!o;$("fab").setAttribute("aria-expanded",String(o));if(o)$("ci").focus()}
+$("fab").addEventListener("click",function(){toggle($("chat").hidden)});
+$("x").addEventListener("click",function(){toggle(false)});
+$("cf").addEventListener("submit",function(e){e.preventDefault();ask($("ci").value);$("ci").value=""});
+})();
+</script>
+</body>
+</html>
